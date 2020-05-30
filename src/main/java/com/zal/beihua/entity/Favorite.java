@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 收藏实体类
  */
 public class Favorite implements Serializable {
-    private Route route;//旅游线路对象
+    private Route route;//鲜花对象
     private String date;//收藏时间
     private User user;//所属用户
 
