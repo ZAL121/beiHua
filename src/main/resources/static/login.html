@@ -32,7 +32,7 @@
 
 			var inputPassword=$("#loginForm input[name='password']").val();
 
-			$.get("/FlowerHome/UserServlet",{"action":"login","username":inputUsername,"password":inputPassword},function (resultInfo) {
+			$.get("/UserController/login",{"action":"login","username":inputUsername,"password":inputPassword},function (resultInfo) {
 
 			    if(resultInfo.flag){
 			        //登录成功，跳转页面

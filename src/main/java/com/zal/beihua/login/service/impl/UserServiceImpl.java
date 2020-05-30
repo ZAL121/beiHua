@@ -7,7 +7,9 @@ import com.zal.beihua.login.service.Exception.UsernameIsEmpty;
 import com.zal.beihua.login.service.Exception.UserpasswordError;
 import com.zal.beihua.login.service.IUserService;
 import com.zal.beihua.utils.Md5Util;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements IUserService {
 
    // IUserDao dao = new UserDaoImpl();

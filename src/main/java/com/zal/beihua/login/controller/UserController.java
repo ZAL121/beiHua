@@ -12,6 +12,7 @@ import com.zal.beihua.utils.Md5Util;
 import com.zal.beihua.utils.UuidUtil;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletException;
@@ -23,8 +24,8 @@ import java.util.Map;
 
 import com.zal.beihua.entity.*;
 
-// @WebServlet(name = "UserServlet", urlPatterns = "/UserServlet")
-@RequestMapping("/UserServlet")
+@Controller
+@RequestMapping("/UserController")
 public class UserController {
 
     @Autowired
