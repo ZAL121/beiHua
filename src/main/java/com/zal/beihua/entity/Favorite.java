@@ -18,9 +18,6 @@ public class Favorite implements Serializable {
 
     /**
      * 有参构造方法
-     * @param route
-     * @param date
-     * @param user
      */
     public Favorite(Route route, String date, User user) {
             this.route = route;
