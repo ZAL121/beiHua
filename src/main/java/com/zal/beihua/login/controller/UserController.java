@@ -106,7 +106,7 @@ public class UserController {
 
     }
 
-  /*  //邮箱激活
+/*    //邮箱激活
     public void active(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
         String code = request.getParameter("code");
@@ -117,10 +117,10 @@ public class UserController {
             response.getWriter().write("激活失败，可能您已激活！");
         }
 
-    }
+    }*/
 
 
-    //注册
+    /*//注册
     public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
         Map<String, String[]> map = request.getParameterMap();
@@ -153,7 +153,7 @@ public class UserController {
         } else {
             response.getWriter().write("服务器忙!");
         }
-    }
+    }*/
 
     //验证码校验
     public void CheckCodeServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
@@ -168,7 +168,7 @@ public class UserController {
 
     }
 
-    //判断用户名是否存在
+    /*//判断用户名是否存在
     public void findUsernameServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
         String username = request.getParameter("username");
