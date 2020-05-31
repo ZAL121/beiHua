@@ -4,11 +4,11 @@
 <mapper namespace="com.zal.beihua.favorite.mapper.FavoriteMapper">
 
     <select id="myFavoriteShow" resultType="java.util.Map">
-        select * from tab_route r,tab_favorite f where r.rid = f.rid and f.uid = #{uid} limit #{startIndex},#{pageSize}
+        select * from tab_route r,tab_favorite f where r.rid = f.rid and f.uid = #{loginUser.uid} limit #{pageBean.startIndex},#{pageBean.pageSize}
     </select>
 
     <select id="totalOfMyFavorite" resultType="java.lang.Integer">
-        select count(*) from tab_favorite where uid = #{uid}
+        select count(*) from tab_favorite where uid = #{loginUser.uid}
     </select>
 
     <select id="totalOfFavorite" resultType="java.lang.Integer">
@@ -16,7 +16,7 @@
     </select>
 
     <select id="findFavorite" resultType="com.zal.beihua.entity.Route">
-        select * from tab_route order by count desc limit #{startIndex},#{pageSize}
+        select * from tab_route order by count desc limit #{pageBean.startIndex},#{pageBean.pageSize}
     </select>
 
 </mapper>

@@ -13,7 +13,7 @@
 <script>
     $(function () {
         var rid = getParameter("rid");
-        $.get("/FlowerShowController/findAllCategory", {"action": "findRouteDetailByRid", "rid": rid}, function (resultInfo) {
+        $.get("/FlowerShowController/findRouteDetailByRid", {"action": "findRouteDetailByRid", "rid": rid}, function (resultInfo) {
 
             // 分类和名称
             $(".bread_box").html('<a href="/">首页</a>\n' +
@@ -97,7 +97,7 @@
 <script>
     $(function () {
         var rid = getParameter("rid");
-        $.get("/FlowerShowController/findAllCategory", {"action": "isAddMyFavorite", "rid": rid}, function (resultInfo) {
+        $.get("/FlowerShowController/isAddMyFavorite", {"action": "isAddMyFavorite", "rid": rid}, function (resultInfo) {
             if (resultInfo.flag) {
                 if (resultInfo.data) {
                     //已经收藏
@@ -114,7 +114,7 @@
 <script>
     function addMyFavorite() {
         var rid = getParameter("rid");
-        $.get("/FlowerShowController/findAllCategory", {"action": "addMyFavorite", "rid": rid}, function (resultInfo) {
+        $.get("/FlowerShowController/addMyFavorite", {"action": "addMyFavorite", "rid": rid}, function (resultInfo) {
             if (resultInfo.flag) {
                 //已登录
                 if (resultInfo.data) {

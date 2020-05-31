@@ -12,13 +12,13 @@
             $(function () {
                 var pageNumber = getParameter("pageNumber");
                 var temp = '';
-                $.get("/FavoriteServlet",{"action":"favoriterank","pageNumber":pageNumber},function (data) {
+                $.get("/FavoriteController/favoriterank",{"action":"favoriterank","pageNumber":pageNumber},function (data) {
                     $(data.rows).each(function (i, m) {
                         if(data.pageNumber==1&&i==0){
                             temp+='          <li>\n' +
                                 '                        <span class="num one">1</span>\n' +
-                                '                        <a href="route_detail.html"><img src="'+m.rimage+'" alt=""></a>\n' +
-                                '                        <h4><a href="route_detail.html">'+m.rname+'</a></h4>\n' +
+                                '                        <a href="route_detail.html?rid='+m.rid+'"><img src="'+m.rimage+'" alt=""></a>\n' +
+                                '                        <h4><a href="route_detail.html?rid='+m.rid+'">'+m.rname+'</a></h4>\n' +
                                 '                        <p>\n' +
                                 '                            <b class="price">&yen;<span>'+m.price+'</span>起</b>\n' +
                                 '                            <span class="shouchang">已购买'+m.count+'次</span>\n' +
@@ -27,7 +27,7 @@
                         }else if (data.pageNumber==1&&i==1){
                                 temp +=' <li>\n' +
                                     '                            <span class="num two">2</span>\n' +
-                                    '                                <a href="route_detail.html"><img src="'+m.rimage+'" alt=""></a>\n' +
+                                    '                                <a href="route_detail.html?rid='+m.rid+'"><img src="'+m.rimage+'" alt=""></a>\n' +
                                     '                                <h4><a href="route_detail.html"></a></h4>\n' +
                                     '                            <p>\n' +
                                     '                            <b class="price">&yen;<span>'+m.price+'</span>起</b>\n' +
@@ -38,8 +38,8 @@
                             var pageNum = data.startIndex+i+1;
                         temp+='<li>\n' +
                             '                            <span class="num">'+pageNum+'</span>\n' +
-                            '                                <a href="route_detail.html"><img src="'+m.rimage+'" alt=""></a>\n' +
-                            '                                <h4><a href="route_detail.html">'+m.rname+'</a></h4>\n' +
+                            '                                <a href="route_detail.html?rid='+m.rid+'"><img src="'+m.rimage+'" alt=""></a>\n' +
+                            '                                <h4><a href="route_detail.html?rid='+m.rid+'">'+m.rname+'</a></h4>\n' +
                             '                            <p>\n' +
                             '                            <b class="price">&yen;<span>'+m.price+'</span>起</b>\n' +
                             '                            <span class="shouchang">已购买'+m.count+'次</span>\n' +

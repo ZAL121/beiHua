@@ -14,7 +14,7 @@ import java.util.Map;
 public interface FlowerShowMapper {
     List<Category> findAllCategory();
 
-    List<Route> findAllRouteByTJForpage(@Param("cid") int cid, PageBean pageBean, @Param("rname") String rname);
+    List<Route> findAllRouteByTJForpage(@Param("cid") int cid, @Param("pageBean") PageBean pageBean, @Param("rname") String rname);
 
     int findTotalByCidRname(@Param("cid") int cid, @Param("rname") String rname);
 
@@ -22,13 +22,13 @@ public interface FlowerShowMapper {
 
     List<RouteImg> findRouteDetailImgByRid(String rid);
 
-    int isAddedMyFavorite(String rid, User loginUser);
+    int isAddedMyFavorite(@Param("rid") String rid, @Param("loginUser") User loginUser);
 
-    void addMyFavorite(String rid, User loginUser);
+    void addMyFavorite(@Param("rid") String rid, @Param("loginUser") User loginUser);
 
     void editRouteCount(String rid);
 
-    void deleteMyFavorite(String rid, User loginUser);
+    void deleteMyFavorite(@Param("rid") String rid, @Param("loginUser") User loginUser);
 
     void editDownRouteCount(String rid);
 

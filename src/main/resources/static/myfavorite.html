@@ -23,7 +23,7 @@
 <script>
     var pageNumber = getParameter("pageNumber");
     $(function () {
-        $.get("/FavoriteServlet", {"action": "myFavoriteShow","pageNumber":pageNumber}, function (resultInfo) {
+        $.get("/FavoriteController/myFavoriteShow", {"pageNumber":pageNumber}, function (resultInfo) {
 
             if (resultInfo.flag) {
                 //已登录，显示收藏
