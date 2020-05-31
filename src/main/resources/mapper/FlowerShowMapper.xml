@@ -13,7 +13,7 @@
             and cid = #{cid}
         </if>
         <if test="rname != null and rname !=''">
-            and rname like %#{rname}%
+            and rname like  concat(concat('%',#{rname}),'%')
         </if>
     </select>
 
@@ -23,7 +23,7 @@
             and cid = #{cid}
         </if>
         <if test="rname != null and rname !=''">
-            and rname like %#{rname}%
+            and rname like concat(concat('%',#{rname}),'%')
         </if>
         limit #{pageBean.startIndex},#{pageBean.pageSize}
     </select>

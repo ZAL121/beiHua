@@ -11,6 +11,7 @@ import com.zal.beihua.utils.MailUtil;
 import com.zal.beihua.utils.Md5Util;
 import com.zal.beihua.utils.UuidUtil;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,8 +50,7 @@ public class UserController {
 
     //验证是否是登录状态
     @RequestMapping("/getUserData")
-    public void getUserData(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException {
+    public void getUserData(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ResultInfo resultInfo = null;
         User loginUser = (User) request.getSession().getAttribute("loginUser");
         if (loginUser == null) {
@@ -65,7 +65,12 @@ public class UserController {
         response.getWriter().write(json);
     }
 
-    //登录
+    /**
+     * @Description: 登录
+     * @Author X.Li
+     * @Date 2020年6月1日01:39:05
+     * @Version V1.0
+     */
     @RequestMapping("/login")
     public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
@@ -109,9 +114,16 @@ public class UserController {
 
     }
 
-/*    //邮箱激活
-    public void active(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException {
+    /**
+     * @Description 邮箱激活
+     * @Author ZAL
+     * @Date 2020/6/1 1:38
+     * @Param
+     * @Return
+     * @Exception
+     */
+    @RequestMapping("/active")
+    public void active(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String code = request.getParameter("code");
         boolean isActive = userService.active(code);
         if (isActive) {
@@ -120,12 +132,19 @@ public class UserController {
             response.getWriter().write("激活失败，可能您已激活！");
         }
 
-    }*/
+    }
 
 
-    /*//注册
-    public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException {
+    /**
+     * @Description 注册
+     * @Author ZAL
+     * @Date 2020/6/1 1:36
+     * @Param
+     * @Return
+     * @Exception
+     */
+    @RequestMapping("register")
+    public void register(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Map<String, String[]> map = request.getParameterMap();
         User user = new User();
         try {
@@ -156,7 +175,7 @@ public class UserController {
         } else {
             response.getWriter().write("服务器忙!");
         }
-    }*/
+    }
 
     /**
      * 验证码校验
@@ -179,11 +198,18 @@ public class UserController {
 
     }
 
-    /*//判断用户名是否存在
-    public void findUsernameServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException {
+    /**
+     * @Description 判断用户名是否存在
+     * @Author ZAL
+     * @Date 2020/6/1 1:26
+     * @Param
+     * @Return
+     * @Exception
+     */
+    @RequestMapping("/findUsername")
+    public void findUsername(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String username = request.getParameter("username");
         String resultMsg = userService.findUsername(username);
         response.getWriter().write(resultMsg);
-    }*/
+    }
 }

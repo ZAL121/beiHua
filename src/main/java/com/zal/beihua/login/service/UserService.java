@@ -7,11 +7,11 @@ import com.zal.beihua.login.service.Exception.UsernameIsEmpty;
 import com.zal.beihua.login.service.Exception.UserpasswordError;
 
 public interface UserService {
-  /*  String findUsername(String username);
+    String findUsername(String username);
 
     boolean register(User user);
 
-    boolean active(String code);*/
+    boolean active(String code);
 
     User login(User user) throws Exception, UsernameIsEmpty, UserNotExistsException, UserpasswordError;
 }

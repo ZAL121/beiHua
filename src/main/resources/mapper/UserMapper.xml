@@ -5,4 +5,21 @@
     <select id="findLoginUser" resultType="com.zal.beihua.entity.User">
         select * from tab_user where username = #{username} and status='Y'
     </select>
+
+    <select id="findUsername" resultType="com.zal.beihua.entity.User">
+        select * from tab_user where username = #{username}
+    </select>
+
+    <insert id="register">
+        insert into tab_user values(null, #{user.username}, #{user.password}, #{user.name}, #{user.birthday}, #{user.sex}, #{user.telephone},
+                #{user.email}, #{user.status},#{user.code})
+    </insert>
+
+    <select id="active" resultType="com.zal.beihua.entity.User">
+        select * from tab_user where code = #{code} and status='N'
+    </select>
+
+    <update id="edit">
+        update tab_user set code=#{uuid} ,status='Y' where uid=#{activeUser.uid}
+    </update>
 </mapper>

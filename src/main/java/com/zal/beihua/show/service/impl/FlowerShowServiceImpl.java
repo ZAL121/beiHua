@@ -126,7 +126,7 @@ public class FlowerShowServiceImpl implements FlowerShowService {
 
     }
 
-    //根据cid查找所有路线
+    //根据cid查找所有鲜花
     @Override
     public String findAllRouteByTJForPage(int cid, int pageNumber, String rname) {
         int pageSize = 8;

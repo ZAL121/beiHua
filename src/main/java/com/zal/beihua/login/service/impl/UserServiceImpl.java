@@ -9,6 +9,7 @@ import com.zal.beihua.login.service.UserService;
 
 import com.zal.beihua.login.mapper.UserMapper;
 import com.zal.beihua.utils.Md5Util;
+import com.zal.beihua.utils.UuidUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,13 +44,13 @@ public class UserServiceImpl implements UserService {
         return loginUser;
     }
 
-/*    //邮件激活
+    //邮件激活
     @Override
     public boolean active(String code) {
         User activeUser = userMapper.active(code);
         if (activeUser != null) {
             //修改用户数据，进行激活
-            int result = userMapper.edit(activeUser);
+            int result = userMapper.edit(UuidUtil.getUuid(), activeUser);
             if (result > 0) {
                 //激活成功
                 return true;
@@ -86,7 +87,7 @@ public class UserServiceImpl implements UserService {
         } else {
             return "no";
         }
-    }*/
+    }
 
 
 }
