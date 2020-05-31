@@ -1,4 +1,5 @@
 package com.zal.beihua.favorite.service.impl;
+
 import com.google.gson.Gson;
 import com.zal.beihua.entity.ResultInfo;
 import com.zal.beihua.entity.Route;
@@ -17,9 +18,9 @@ import java.util.Map;
 
 @Service
 public class FavoriteServiceImpl implements FavoriteService {
+
     @Autowired
     private FavoriteMapper favoriteMapper;
-
 
     //收藏排行
     @Override

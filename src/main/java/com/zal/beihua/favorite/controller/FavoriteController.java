@@ -35,6 +35,7 @@ public class FavoriteController {
             pageNumber = 1;
         }
         String json = favoriteService.favoriterank(pageNumber);
+        response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
     }
 
@@ -59,6 +60,7 @@ public class FavoriteController {
             pageNumber = 1;
         }
         String json = favoriteService.myFavoriteShow(loginUser, pageNumber);
+        response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
     }
 }

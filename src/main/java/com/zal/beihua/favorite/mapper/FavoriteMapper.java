@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface FavoriteMapper {
+
     List<Map<String,Object>> myFavoriteShow(User loginUser, PageBean pageBean);
 
     int totalOfMyFavorite(User loginUser);

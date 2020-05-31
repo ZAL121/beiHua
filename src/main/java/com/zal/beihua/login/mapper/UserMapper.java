@@ -1,4 +1,4 @@
-package com.zal.beihua.mapper;
+package com.zal.beihua.login.mapper;
 
 import com.zal.beihua.entity.User;
 

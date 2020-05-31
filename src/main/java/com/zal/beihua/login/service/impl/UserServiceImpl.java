@@ -7,7 +7,7 @@ import com.zal.beihua.login.service.Exception.UsernameIsEmpty;
 import com.zal.beihua.login.service.Exception.UserpasswordError;
 import com.zal.beihua.login.service.UserService;
 
-import com.zal.beihua.mapper.UserMapper;
+import com.zal.beihua.login.mapper.UserMapper;
 import com.zal.beihua.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

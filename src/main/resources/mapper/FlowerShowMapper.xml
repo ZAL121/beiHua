@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zal.beihua.show.mapper.FlowerShowMapper">
+
+    <select id="findAllCategory" resultType="com.zal.beihua.entity.Category">
+        select * from tab_category
+    </select>
+
+    <select id="findTotalByCidRname" resultType="int">
+        select count(*) from tab_route where 1=1
+        <if test="cid != 0">
+            and cid = #{cid}
+        </if>
+        <if test="rname != null and rname !=''">
+            and rname like %#{rname}%
+        </if>
+    </select>
+
+    <select id="findAllRouteByTJForpage" resultType="com.zal.beihua.entity.Route">
+        select * from tab_route where 1=1
+        <if test="cid != 0">
+            and cid = #{cid}
+        </if>
+        <if test="rname != null and rname !=''">
+            and rname like %#{rname}%
+        </if>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="findRouteInfoByRid" resultType="java.util.Map">
+        SELECT * FROM tab_route r ,tab_category c , tab_seller s WHERE r.cid = c.cid AND r.sid = s.sid AND r.rid = #{rid}
+    </select>
+
+    <select id="findRouteDetailImgByRid" resultType="com.zal.beihua.entity.RouteImg">
+        select * from tab_route_img where rid =#{rid}
+    </select>
+
+    <select id="isAddedMyFavorite" resultType="java.lang.Integer">
+        select count(*) from tab_favorite where rid = #{rid} and uid=#{uid}
+    </select>
+
+    <insert id="addMyFavorite">
+        insert into tab_favorite values(#{rid},NOW(),#{uid})
+    </insert>
+
+    <update id="editRouteCount">
+        update tab_route set count = count+1 where rid =#{rid}
+    </update>
+
+    <delete id="deleteMyFavorite">
+        delete from tab_favorite where rid = #{rid} and uid = #{uid}
+    </delete>
+
+    <update id="editDownRouteCount">
+        update tab_route set count = count -1 where rid = #{rid}
+    </update>
+
+</mapper>

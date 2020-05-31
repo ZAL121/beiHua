@@ -2,7 +2,7 @@
 <script type="text/javascript">
 
     $(function () {
-        $.get("/UserServlet?action=getUserData", function (resultInfo) {
+        $.get("/UserController/getUserData", function (resultInfo) {
             if (resultInfo.flag) {
                 $(".login").html('<span>欢迎：' + resultInfo.data.username + '</span>\n' +
                     '<a href="myfavorite.html" class="collection">购物车</a>\n' +
@@ -16,7 +16,7 @@
     })
 
     function logout() {
-        $.get("/UserServlet", {"action": "logout"}, function (data) {
+        $.get("/UserController/logout", {}, function (data) {
             location.href = "/login.html";
         }, "text")
     }
@@ -24,7 +24,7 @@
 <script type="text/javascript">
     $(function () {
         //获取分类信息
-        $.get("/RouteServlet", {"action": "findAllCategory"}, function (data) {
+        $.get("/FlowerShowController/findAllCategory", {}, function (data) {
             var temp = '';
             temp += '<li class="nav-active"><a href="index.html">首页</a></li>';
             $(data).each(function (i, m) {

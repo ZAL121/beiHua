@@ -34,17 +34,16 @@ public class UserController {
 
 
     /**
-     *@Description 登录退出
-     *@Author ZAL
-     *@Date 2020/5/30 21:35
-     *@Parameter
-     *@Return
-     *@Exception
-     *@Version V1.0
-    */
+     * @Description 登录退出
+     * @Author ZAL
+     * @Date 2020/5/30 21:35
+     * @Parameter
+     * @Return
+     * @Exception
+     * @Version V1.0
+     */
     @RequestMapping("/logout")
-    public void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException {
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.getSession().invalidate();
     }
 
@@ -62,6 +61,7 @@ public class UserController {
             resultInfo = new ResultInfo(true, loginUser, null);
         }
         String json = new Gson().toJson(resultInfo);
+        response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
     }
 
@@ -103,6 +103,8 @@ public class UserController {
         }
 
         String json = new Gson().toJson(resultInfo);
+        response.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
 
     }
@@ -156,15 +158,23 @@ public class UserController {
         }
     }*/
 
-    //验证码校验
-    public void CheckCodeServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+    /**
+     * 验证码校验
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @RequestMapping("/checkCode")
+    public void checkCode(HttpServletRequest request, HttpServletResponse response) throws Exception,
             IOException {
         String trueCheckCode = (String) request.getSession().getAttribute("CHECKCODE_SERVER");
         String inputCheckCode = request.getParameter("inputCheckCode");
-        if (trueCheckCode.equalsIgnoreCase(inputCheckCode)) {
-            response.getWriter().write("yes");
-        } else {
+        if ((trueCheckCode == null || inputCheckCode == null) || (!trueCheckCode.equalsIgnoreCase(inputCheckCode))) {
             response.getWriter().write("no");
+        } else {
+            response.getWriter().write("yes");
         }
 
     }

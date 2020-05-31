@@ -48,7 +48,7 @@
                         $("#verifyCodeInfo").html("");
                         var intputCheckCode = $(this).val();
 					    //验证码不为空时，使用异步校验
-						$.get("/UserServlet?action=CheckCodeServlet&inputCheckCode="+intputCheckCode+"",function (data) {
+						$.get("/UserController/checkCode?inputCheckCode="+intputCheckCode+"",function (data) {
 							if("yes"==data){
 							    //成功
                                 $("#verifyCodeInfo").html("");
@@ -171,7 +171,7 @@
 									<script type="text/javascript">
 										//图片点击事件
 										function changeCheckCode(img) {
-											img.src="checkCode?"+new Date().getTime();
+											img.src="/CheckCode/makeCheckCode?"+new Date().getTime();
                                         }
 									</script>
     							</td>
