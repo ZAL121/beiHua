@@ -5,15 +5,19 @@ import com.zal.beihua.entity.User;
 import com.zal.beihua.login.service.Exception.UserNotExistsException;
 import com.zal.beihua.login.service.Exception.UsernameIsEmpty;
 import com.zal.beihua.login.service.Exception.UserpasswordError;
-import com.zal.beihua.login.service.IUserService;
+import com.zal.beihua.login.service.UserService;
+
+import com.zal.beihua.mapper.UserMapper;
 import com.zal.beihua.utils.Md5Util;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
 
-   // IUserDao dao = new UserDaoImpl();
-
+    @Autowired
+    private UserMapper userMapper;
 
     //登录
     @Override
@@ -22,8 +26,7 @@ public class UserServiceImpl implements IUserService {
             throw new UsernameIsEmpty("用户名不能为空!");
         }
         //loginUser是从数据库中获取的用户
-//        User loginUser = dao.findLoginUser(user);
-        User loginUser = new User();
+        User loginUser = userMapper.findLoginUser(user);
         if (loginUser == null) {
             //用户未激活或者不存在
             throw new UserNotExistsException("用户未激活或不存在!");
@@ -43,10 +46,10 @@ public class UserServiceImpl implements IUserService {
 /*    //邮件激活
     @Override
     public boolean active(String code) {
-        User activeUser = dao.active(code);
+        User activeUser = userMapper.active(code);
         if (activeUser != null) {
             //修改用户数据，进行激活
-            int result = dao.edit(activeUser);
+            int result = userMapper.edit(activeUser);
             if (result > 0) {
                 //激活成功
                 return true;
@@ -65,7 +68,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public boolean register(User user) {
 
-        int result = dao.register(user);
+        int result = userMapper.register(user);
         if (result > 0) {
             return true;
         } else {
@@ -77,7 +80,7 @@ public class UserServiceImpl implements IUserService {
     //查重用户名
     @Override
     public String findUsername(String username) {
-        User user = dao.findUsername(username);
+        User user = userMapper.findUsername(username);
         if (user == null) {
             return "yes";
         } else {

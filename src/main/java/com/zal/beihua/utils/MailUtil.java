@@ -42,7 +42,7 @@ public final class MailUtil {
 		// 设置主题:
 		message.setSubject("来自花之家用户注册成功之后的激活邮件!");
 		// 设置内容：
-		String url = "http://localhost:8080/FlowerHome/UserServlet?action=active&code="+code;
+		String url = "http://localhost:8080/UserServlet?action=active&code="+code;
 		message.setContent("<h1>来自花之家用户注册成功之后的激活邮件!激活请点击以下链接！</h1><h3><a href='"+url+"'>"+url+"</a></h3>","text/html;charset=UTF-8");
 		//3_发送邮件
 		Transport.send(message);

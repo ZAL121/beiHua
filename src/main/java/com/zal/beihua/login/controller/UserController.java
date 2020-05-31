@@ -6,7 +6,7 @@ import com.zal.beihua.entity.ResultInfo;
 import com.zal.beihua.login.service.Exception.UserNotExistsException;
 import com.zal.beihua.login.service.Exception.UsernameIsEmpty;
 import com.zal.beihua.login.service.Exception.UserpasswordError;
-import com.zal.beihua.login.service.IUserService;
+import com.zal.beihua.login.service.UserService;
 import com.zal.beihua.utils.MailUtil;
 import com.zal.beihua.utils.Md5Util;
 import com.zal.beihua.utils.UuidUtil;
@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,8 +29,8 @@ import com.zal.beihua.entity.*;
 @RequestMapping("/UserController")
 public class UserController {
 
-    @Autowired
-    IUserService userService;
+    @Resource
+    private UserService userService;
 
 
     /**

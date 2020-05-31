@@ -24,7 +24,7 @@
 						if(reg.test(inputUsername)){
 						    //合法
                             //用ajax异步判断用户名是否存在
-                            $.get("/FlowerHome/UserServlet",{"action":"findUsernameServlet","username":inputUsername},function (data) {
+                            $.get("/UserServlet",{"action":"findUsernameServlet","username":inputUsername},function (data) {
                                 if("yes"==data){
                                     //用户名可用
                                     $("#usernameinfo").html("");
@@ -48,7 +48,7 @@
                         $("#verifyCodeInfo").html("");
                         var intputCheckCode = $(this).val();
 					    //验证码不为空时，使用异步校验
-						$.get("/FlowerHome/UserServlet?action=CheckCodeServlet&inputCheckCode="+intputCheckCode+"",function (data) {
+						$.get("/UserServlet?action=CheckCodeServlet&inputCheckCode="+intputCheckCode+"",function (data) {
 							if("yes"==data){
 							    //成功
                                 $("#verifyCodeInfo").html("");
@@ -71,7 +71,7 @@
                     if(usernameFlag&&checkCodeFiag){
 					//提交表单
 						var serialize = $("#registerForm").serialize();
-						location.href="/FlowerHome/UserServlet?"+serialize+"";
+						location.href="/UserServlet?"+serialize+"";
 
                     }else{
                         alert("有非法项，请检查");
@@ -191,7 +191,7 @@
     			<div class="rg_form_right">
     				<p>
     					已有账号？
-    					<a href="http://localhost:8080/FlowerHome/login.html">立即登录</a>
+    					<a href="http://localhost:8080/login.html">立即登录</a>
     				</p>
     			</div>
     		</div>

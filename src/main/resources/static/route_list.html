@@ -18,7 +18,7 @@
         var pageNumber = getParameter("pageNumber");
         var cid = getParameter("cid");
         var rname = getParameter("rname");
-        $.get("/FlowerHome/RouteServlet",{"action":"findAllRouteByTJForPage","cid":cid,"pageNumber":pageNumber,"rname":rname},function (pageBean) {
+        $.get("/RouteServlet",{"action":"findAllRouteByTJForPage","cid":cid,"pageNumber":pageNumber,"rname":rname},function (pageBean) {
             var temp = '';
             $(pageBean.rows).each(function (i,m) {
                 temp+=' <li>\n' +
