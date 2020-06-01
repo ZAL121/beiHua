@@ -40,10 +40,10 @@ public final class MailUtil {
 		// 设置收件人:
 		message.setRecipient(RecipientType.TO, new InternetAddress(toEmail));
 		// 设置主题:
-		message.setSubject("来自花之家用户注册成功之后的激活邮件!");
+		message.setSubject("来自呗花用户注册成功之后的激活邮件!");
 		// 设置内容：
-		String url = "http://localhost:8080/UserServlet?action=active&code="+code;
-		message.setContent("<h1>来自花之家用户注册成功之后的激活邮件!激活请点击以下链接！</h1><h3><a href='"+url+"'>"+url+"</a></h3>","text/html;charset=UTF-8");
+		String url = "http://localhost:8080/UserController/active?code="+code;
+		message.setContent("<h1>来自呗花用户注册成功之后的激活邮件!激活请点击以下链接！</h1><h3><a href='"+url+"'>"+url+"</a></h3>","text/html;charset=UTF-8");
 		//3_发送邮件
 		Transport.send(message);
 	}
@@ -51,7 +51,7 @@ public final class MailUtil {
 	 * 测试类
 	 */
 	public static void main(String[] args) throws Exception{
-		String toEmail = "2191852518@qq.com";
+		String toEmail = "1@qq.com";
 		String code = "asdfasfasfasfasfasfasdfasfasfasfasfasfasfasfas";
 		sendMail(toEmail,code);
 		System.out.println("发送成功。。。");

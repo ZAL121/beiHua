@@ -125,9 +125,11 @@ public class UserController {
         String code = request.getParameter("code");
         boolean isActive = userService.active(code);
         if (isActive) {
-            response.getWriter().write("激活成功!");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Activation successful!");
         } else {
-            response.getWriter().write("激活失败，可能您已激活！");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Your account has been activated!");
         }
 
     }
@@ -141,7 +143,7 @@ public class UserController {
      * @Return
      * @Exception
      */
-    @RequestMapping("register")
+    @RequestMapping("/register")
     public void register(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Map<String, String[]> map = request.getParameterMap();
         User user = new User();
@@ -169,7 +171,7 @@ public class UserController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            response.sendRedirect("register_ok.html");
+            response.sendRedirect("/register_ok.html");
         } else {
             response.getWriter().write("服务器忙!");
         }
