@@ -102,7 +102,7 @@ public class FlowerShowServiceImpl implements FlowerShowService {
         return json;
     }
 
-    //根据rid查询路线详情信息
+    //根据rid查询花的详情信息
     @Override
     public String findRouteDetailByRid(String rid) {
         Map<String, Object> map = flowerShowMapper.findRouteInfoByRid(rid);
@@ -126,7 +126,7 @@ public class FlowerShowServiceImpl implements FlowerShowService {
 
     }
 
-    //根据cid查找所有鲜花
+    //根据cid查找所有花
     @Override
     public String findAllRouteByTJForPage(int cid, int pageNumber, String rname) {
         int pageSize = 8;

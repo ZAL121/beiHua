@@ -35,7 +35,7 @@ public class UserController {
 
 
     /**
-     * @Description 登录退出
+     * @Description 退出登录
      * @Author ZAL
      * @Date 2020/5/30 21:35
      * @Parameter
@@ -109,9 +109,7 @@ public class UserController {
 
         String json = new Gson().toJson(resultInfo);
         response.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
-
     }
 
     /**
