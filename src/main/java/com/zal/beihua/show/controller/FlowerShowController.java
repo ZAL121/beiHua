@@ -95,8 +95,7 @@ public class FlowerShowController {
      * @Version V1.0
      */
     @RequestMapping("/findAllCategory")
-    public void findAllCategory(HttpServletRequest request, HttpServletResponse response) throws Exception,
-            IOException {
+    public void findAllCategory(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String json = service.findAllCategory();
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
