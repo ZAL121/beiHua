@@ -82,7 +82,10 @@ public class FlowerShowController {
         String pageNumberStr = request.getParameter("pageNumber");
         String inputInfo = request.getParameter("rname");
         String rname = URLDecoder.decode(inputInfo, "utf-8");
-        int pageNumber = Integer.parseInt(pageNumberStr);
+        int pageNumber = 1;
+        if(!"".equals(pageNumberStr)) {
+             pageNumber = Integer.parseInt(pageNumberStr);
+        }
         String json = service.findAllRouteByTJForPage(cid, pageNumber, rname);
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
